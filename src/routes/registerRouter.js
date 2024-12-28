@@ -68,6 +68,7 @@ registerRouter.post('/',async(req,res) => {
     }
 })
 
+
 registerRouter.get('/approve/:id',(req, res) => {
     const id = req.params.id
     console.log(id);
@@ -116,6 +117,26 @@ registerRouter.get('/approve/:id',(req, res) => {
 registerRouter.get('/view_user_profile/:id',(req,res) => {
     const id = req.params.id
     registration.find({login_id:id})
+    .then(function(data) {
+        if(data==0) {
+            return res.status(401).json({
+                success: false,
+                error: true,
+                message:"No data found"
+            })
+        }
+
+        else{
+            return res.status(200).json({
+                success:true,
+                error:false,
+                data:data
+            })
+        }
+    })
+})
+registerRouter.get('/view_users',(req,res) => {
+    registration.find()
     .then(function(data) {
         if(data==0) {
             return res.status(401).json({
