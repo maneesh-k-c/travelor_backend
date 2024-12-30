@@ -7,6 +7,7 @@
 //})
 
 const mongoose = require('mongoose')
+const cors = require('cors')
 var express = require("express")
 var bodyParser = require('body-parser')
 const adminRouter = require("./src/routes/adminRouter")
@@ -22,16 +23,13 @@ const chatRouter = require("./src/routes/chatRouter")
 const agentRouter = require("./src/routes/agentRouter")
 const userplanRouter = require("./src/routes/userplanRouter")
 const companyRouter = require('./src/routes/companyRouter')
-
-
-
-
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(express.static('./public'))
 app.set('views','./src/views')
 app.set('view engine','ejs')
-
+app.use(cors())
+app.use(express.json())
 app.get('/',(req,res)=>{
     res.render("login")
 })
