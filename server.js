@@ -22,6 +22,7 @@ const paymentRouter = require("./src/routes/paymentRouter")
 const chatRouter = require("./src/routes/chatRouter")
 const agentRouter = require("./src/routes/agentRouter")
 const userplanRouter = require("./src/routes/userplanRouter")
+const apiRouter = require("./src/routes/apiRouter")
 const companyRouter = require('./src/routes/companyRouter')
 const app = express()
 app.use(express.static('./public'))
@@ -47,6 +48,7 @@ app.use('/api/agent',agentRouter)
 app.use('/api/chat',chatRouter)
 app.use('/api/userplan',userplanRouter)
 app.use('/api/company',companyRouter)
+app.use('/api',apiRouter)
 
 
 
@@ -62,11 +64,11 @@ const MONGODB_URL=
 "mongodb+srv://userone:userone@database.wkagg.mongodb.net/retail?retryWrites=true&w=majority"
 
 
-const port=2000;
+const port=4000;
 
 mongoose.connect(MONGODB_URL).then(()=>{
     app.listen(port,()=>{
-        console.log(`server running on port http://localhost:2000/`);
+        console.log(`server running on port http://localhost:4000/`);
     })
 }).catch((error)=>{
     console.log(` ${error} did not connect`); 
