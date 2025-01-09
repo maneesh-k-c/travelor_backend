@@ -85,7 +85,7 @@ apiRouter.get('/view-places', async (req, res) => {
                     'activity': { '$first': '$activity' },
                     'name': { '$first': '$user.name' },
                     'userEmail': { '$first': '$user.email' },
-                    'image': { '$first': '$imageUrl' },
+                    'image': { '$first': '$image' },
                 }
             }
         ])
